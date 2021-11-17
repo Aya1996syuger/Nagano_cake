@@ -6,15 +6,15 @@ class Admin::ItemsController < ApplicationController
   def create
      item = Item.new(item_params)
      item.save
-     redirect_to '/top'
+     redirect_to item_path
   end
 
   def index
-    @item = Item.new
     @items = Item.all
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit

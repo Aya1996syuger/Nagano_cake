@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2021_11_14_231606) do
     t.integer "genre_id"
     t.string "name"
     t.string "image_id"
-    t.text "ontroduction"
     t.integer "price"
     t.boolean "is_active", default: true
     t.datetime "create_at", null: false
     t.datetime "update_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "ontroduction"
   end
 
 end
