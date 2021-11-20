@@ -1,0 +1,12 @@
+<h2>さんの詳細画面</h2>
+
+<h2>会員ID</h2>
+<p><%= @customer.id %></p>
+<h2>氏名</h2>
+<p><%= @customer.name %></p>
+<h2>メールアドレス</h2>
+<p><%= @customer.emil %></p>
+<h2>ステータス</h2>
+<p><%= @customer.is_active %></p>
+
+<%= link_to "編集する",edit_admin_customer(@customer) %>
