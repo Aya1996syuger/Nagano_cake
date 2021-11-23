@@ -70,3 +70,11 @@ gem "refile-mini_magick"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 # 画像加工用（サイズ調整など）gem
 gem "refile-mini_magick"
+
+group :development, :test do
+  gem 'pry-rails'
+
+  gem 'pry-doc'
+
+  gem 'pry-byebug'
+end

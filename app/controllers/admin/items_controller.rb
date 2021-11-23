@@ -5,8 +5,9 @@ class Admin::ItemsController < ApplicationController
 
   def create
      @item = Item.new(item_params)
+     @item.genre_id = 30
      @item.save
-     redirect_to item_path
+     redirect_to admin_items_path
   end
 
   def index
@@ -26,6 +27,6 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :image_id)
+    params.require(:item).permit(:name, :introduction, :image)
   end
 end
