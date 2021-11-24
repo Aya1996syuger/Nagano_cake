@@ -1,4 +1,4 @@
-<h1>item商品一覧</h1>
+<h1>商品一覧</h1>
 
 <thead>
     <tr>
@@ -14,13 +14,11 @@
  <tbody>
     <% @items.each do |item| %>
      <tr>
-      <td>
-        <%= item.item_id %>
-        <%= item.name %>
-        <%= item.price%>
-        <%= item.genre%>
-        <$= item.is_active%>
-      </td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= item.genre_id %></td>
+      <td><%= item.is_active %></td>
+      <td><%= item.is_active ? '有効' : '無効' %></td>
      </tr>
     <% end %>
-
+</tbody>

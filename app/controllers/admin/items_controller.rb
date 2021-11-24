@@ -4,8 +4,9 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
+     @genre = Genre.new
      @item = Item.new(item_params)
-     @item.genre_id = 30
+     #@item.genre_id = @genre.id
      @item.save
      redirect_to admin_items_path
   end

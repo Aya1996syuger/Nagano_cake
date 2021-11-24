@@ -1,15 +1,25 @@
 <h2>商品新規登録</h2>
 <!-- form_with部分 -->
 <%= form_with model: @item, url:'/admin/items', local:true do |f| %>
-  <h4>商品画像</h4>
+
+ <h4>商品画像</h4>
+  <%= f.label :image, '商品画像' %>
   <%= f.attachment_field :image %>
+
   <h4>商品名</h4>
-　<input type="text" value="" placeholder="商品名" >
+  <%= f.label :item, '商品名' %>
+  <%= f.text_field :item %>
+
   <h4>商品説明</h4>
-　<textarea placeholder="ここに説明文を記述します" cols="50" rows="10" ></textarea>
+  <%= f.label :introduction, '商品説明' %>
+　<%= f.text_area :introduction %>
+
   <h4>ジャンル</h4>
   <h4>税抜価格</h4>
-  <input type="text" value="" placeholder="1000" >円
+  <%= f.label :price, '税抜価格' %>
+  <%= f.text_field :price %>
 　<h4>販売ステータス</h4>
+　　 <%= f.select :is_active ,[['販売中',true],['販売停止中',false]] %>
+
   <%= f.submit '新規登録' %>
 <% end %>

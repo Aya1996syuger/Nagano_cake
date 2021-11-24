@@ -6,14 +6,11 @@ class Admin::GenresController < ApplicationController
   def create
 
     @genre = Genre.new(genre_params)
-    if@genre.save
+    @genre.save
        flash[:notice] = "登録が完了しました。"
        redirect_to admin_genres_path
-    else
-       flash[:notice] = "登録できてない。"
-       render:new
-    end
   end
+
 
   def index
     @genre = Genre.new
@@ -22,6 +19,12 @@ class Admin::GenresController < ApplicationController
 
   def edit
     @genre = Genre.find(params[:id])
+  end
+
+  def update
+    genre = Genre.find(params[:id])
+     genre.update(genre_params)
+     redirect_to admin_genres_path
   end
 
  private
