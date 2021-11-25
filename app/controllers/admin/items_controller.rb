@@ -4,7 +4,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-     @genre = Genre.new
      @item = Item.new(item_params)
      #@item.genre_id = @genre.id
      @item.save
@@ -28,6 +27,6 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :image)
+    params.require(:item).permit(:name, :introduction, :image, :price, :is_active, :genre_id)
   end
 end
