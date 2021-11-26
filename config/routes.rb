@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
-    devise_for :admins,controllers: {
-    registrations: 'admins/registrations'
-                  }
+
+
+    devise_for :publics,controllers: {registrations: 'publics/registrations' }
+    devise_for :admins,controllers: {registrations: 'admins/registrations' }
 
    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    root to: 'public/homes#top'
    get '/about' => 'public/homes#about'
    get '/admin' => 'admin/homes#top'
 
+     namespace :public do
+       resources :customers, only:[:show, :edit]
+       resources :items, only: [:index, :show]
+     end
 
-   namespace :admin do
-     resources :homes
-     resources :genres, only: [:index, :create, :edit, :update]
-     resources :items
-     resources :customers
-   end
+     namespace :admin do
+       resources :homes
+       resources :genres, only: [:index, :create, :edit, :update]
+       resources :items
+       resources :customers
+     end
 end
