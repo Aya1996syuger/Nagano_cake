@@ -1,9 +1,13 @@
 <h2>商品一覧</h2>
 
-<% @items.each do |item| %>
+  <% @items.each do |item| %>
     <%= attachment_image_tag item, :image, :fill, 150, 150 %></br>
-     <%= link_to public_item_path(item.id) do%>
+     <%= link_to public_item_path(item.id),class:link %> do%>
       <%= item.name %></br>
      <% end %>
       ¥<%= item.price %></br>
 <% end %>
+
+ 
+
+

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
     devise_for :publics,controllers: {registrations: 'publics/registrations' }
     devise_for :admins,controllers: {registrations: 'admins/registrations' }
 
@@ -12,6 +11,8 @@ Rails.application.routes.draw do
      namespace :public do
        resources :customers, only:[:show, :edit]
        resources :items, only: [:index, :show]
+       resources :orders, only: [:index, :show]
+       resources :cart_items, only: [:index ]
      end
 
      namespace :admin do
