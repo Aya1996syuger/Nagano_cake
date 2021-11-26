@@ -1,13 +1,12 @@
 <h1>ジャンル編集</h1>
 
 <%= form_with model:@genre, url: admin_genre_path(l:true do |f| %>
-
-  <div class="form-group">
-   <label for="name">ジャンル名</label>
-   <%= f.text_field :name %>
-  </div>
-  
-  <div class="form-group">
-   <%= f.submit '更新' %>
-  </div>
+   <div class="form-group">
+     <label for="name">ジャンル名</label>
+     <%= f.text_field :name %>
+   </div>
+   
+   <div class="form-group">
+     <%= f.submit '更新' %>
+   </div>
 <% end %>

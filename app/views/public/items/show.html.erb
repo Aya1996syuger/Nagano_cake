@@ -1,2 +1,8 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+<%= attachment_image_tag @item, :image, :fill, 150, 150 %>
+
+<h4><%= @item.name %></h4>
+
+<p><%= @item.introduction %></p>
+
+<p>¥<%= @item.price%>(税込）</p>
