@@ -8,6 +8,7 @@
 <p>¥<%= @item.price%>(税込）</p>
 
 
-<%= form_for model: @cart_item, do |f| %>
+<%= form_with model: @cart_item, url:'/public/cart_items', local:true do |f| %>
+ <!--%= form_for model: CartItem.new do |f| %-->
   <%= f.select :amount, [['１',1], ['２',2], ['３',3]] %>
 <% end %>
