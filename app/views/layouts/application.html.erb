@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <!--%= csrf_meta_tags %-->
-    <!--%= csp_meta_tag %-->
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -29,13 +29,12 @@
     <% elsif customer_signed_in? %>
       <!--li class= "nav-item">
         <!--%= link_to "マイページ", publc_items_path %-->
-      </li-->
+      <!--/li-->
       <li class= "nav-item">
         <%= link_to "商品一覧", public_items_path %>
       </li>
       <!--li class= "nav-item">
         <!--%= link_to "カート", admin_path %-->
-
       <li class= "nav-item">
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
 
@@ -43,7 +42,8 @@
       <li class= "nav-item">
          <%= link_to "About", about_path %>
       </li>
-         <!--%= link_to "商品一覧, new_admin_registration_path %-->
+      <li class= "nav-item">
+         <%= link_to "商品一覧" , admin_items_path %>
       <li class= "nav-item">
         <%= link_to "新規登録", new_customer_registration_path %>
       </li>
