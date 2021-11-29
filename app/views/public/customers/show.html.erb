@@ -1,14 +1,20 @@
 <h2>顧客マイページ</h2>
 
 <h5>登録情報
-<%= link_to "編集する", edit_public_customer_path %>
+ <%= link_to "編集する", edit_public_customer_path %>
 </h5>
 
-<h6>会員ID</h6>
-<p><%= @customer.id %></p>
+
 <h6>氏名</h6>
 <p><%= @customer.last_name %><%= @customer.first_name %></p>
+<h6>カナ</h6>
+<p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
+<h6>郵便番号</h6>
+<p><%= @customer.postal_code %></p>
+<h6>住所</h6>
+<p><%= @customer.address %></p>
+<h6>電話番号</h6>
+<p><%= @customer.telephone_number %></p>
+
 <h6>メールアドレス</h6>
 <p><%= @customer.email %></p>
-<h6>ステータス</h6>
-<p><%= @customer.is_active %></p>
