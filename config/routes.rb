@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-   
+
   devise_for :customers
   devise_for :admins,controllers: {sessions: 'admins/sessions' }
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
        resources :customers, only:[:show, :edit, :update]
        resources :items, only: [:index, :show]
        resources :orders, only: [:index, :show]
-       resources :cart_items, only: [:index ,:create]
+       resources :cart_items, only: [:index ,:update, :destroy, :create]
      end
 
      namespace :admin do

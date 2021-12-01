@@ -8,7 +8,9 @@
 <p>¥<%= @item.price%>(税込）</p>
 
 
-<%= form_with model: @cart_item, url:'/public/cart_items', local:true do |f| %>
- <!--%= form_for model: CartItem.new do |f| %-->
-  <%= f.select :amount, [['１',1], ['２',2], ['３',3]] %>
+<%= form_with model: @cart_item, url:public_cart_items_path, method: :POST do |f| %>
+  <%= f.hidden_field :amount, value: "cart_items" %>
+   <%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.select :amount,  *[1..10] %>
+  <%= f.submit 'カートに入れる',class:"btn btn-success" %>
 <% end %>

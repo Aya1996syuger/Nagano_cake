@@ -17,6 +17,8 @@ class Public::CustomersController < ApplicationController
      render :edit
    end
   end
+
+
   def customer_params
     params.require(:customer).
     permit(:first_name, :last_name, :last_name_kana, :first_name_kana, :email, :adress, :telephone_number ,:is_active)
