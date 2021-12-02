@@ -8,14 +8,16 @@ Rails.application.routes.draw do
     root to: 'public/homes#top'
     get '/about' => 'public/homes#about'
     get '/admin' => 'admin/homes#top'
-    get '/unsubscribe/customer/:id' => 'customer#unsubscribe', as: 'confirm_unsubscribe'
-    patch '/withdroaw/customer/:id' => 'customer#withdraw', as: 'withdraw_customer'
+   
 
     namespace :public do
-        resources :customers, only:[:show, :edit, :update, :withdraw, :unsubscribe]
+        resources :customers, only:[:show, :edit, :update ]
+         get '/unsubscribe/customers/:id' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+         patch '/withdroaw/customers/:id' => 'customers#withdraw', as: 'withdraw_customer'
         resources :items, only: [:index, :show]
         resources :orders, only: [:index, :show]
         resources :cart_items, only: [:index ,:update, :destroy, :create]
+        
     end
 
     namespace :admin do

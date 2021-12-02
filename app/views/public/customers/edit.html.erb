@@ -50,4 +50,4 @@
   </div>
 <% end %>
 
-<%= link_to "退会", confirm_unsubscribe_path, class: "btn btn-secondary" %>
+<%= link_to "退会", public_confirm_unsubscribe_path(current_customer.id), class: "btn btn-secondary" %>
