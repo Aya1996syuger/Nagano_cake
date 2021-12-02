@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
     devise_for :customers
     devise_for :admins,controllers: {sessions: 'admins/sessions' }
 
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
     root to: 'public/homes#top'
     get '/about' => 'public/homes#about'
     get '/admin' => 'admin/homes#top'
-   
+
 
     namespace :public do
         resources :customers, only:[:show, :edit, :update ]
@@ -17,7 +21,8 @@ Rails.application.routes.draw do
         resources :items, only: [:index, :show]
         resources :orders, only: [:index, :show]
         resources :cart_items, only: [:index ,:update, :destroy, :create]
-        
+        resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+
     end
 
     namespace :admin do

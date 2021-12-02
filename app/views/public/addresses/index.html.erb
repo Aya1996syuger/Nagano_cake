@@ -1,0 +1,42 @@
+<h1>配送先</h1>
+<%= form_with model: @address, url:public_addresses_path, local:true do |f| %>
+  <%= f.label :postal_code, '郵便番号' %>
+  <%= f.text_field :postal_code %>
+
+  <%= f.label :name, '宛名' %>
+  <%= f.text_field :name %>
+
+  <%= f.label :address, '住所' %>
+  <%= f.text_field :address %>
+
+  <%=f.submit '新規登録', class: 'btn btn-success' %>
+
+<% end %>
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+      <th colspan="4"></th>
+    </tr>
+   </thead>
+
+　 <tbody>
+　　<% @addresses.each do |addresses| %>
+　　　<tr>
+       <td><%= addresses.postal_code %></td>
+       <td><%= addresses.address %></td>
+       <td><%= addresses.name %></td>
+       <td>
+         <%= link_to "編集する",edit_public_address_path(addresses) ,class: "btn btn-secondary"%>
+         <%= link_to "削除する", public_address_path(addresses),class: "btn btn-secondary", method: :delete %>
+    <% end %>
+  </tbody>
+</table>
