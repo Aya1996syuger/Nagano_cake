@@ -1,20 +1,21 @@
-<h1>配送先</h1>
+<div class="title">
+  配送先
+</div>
+
 <%= form_with model: @address, url:public_addresses_path, local:true do |f| %>
   <%= f.label :postal_code, '郵便番号' %>
-  <%= f.text_field :postal_code %>
-
-  <%= f.label :name, '宛名' %>
-  <%= f.text_field :name %>
+  <%= f.text_field :postal_code, placeholder: "0000000"%></br>
 
   <%= f.label :address, '住所' %>
-  <%= f.text_field :address %>
+  <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園23-2" %></br>
+
+  <%= f.label :name, '宛名' %>
+  <%= f.text_field :name, placeholder: "令和麗子" %></br>
+
 
   <%=f.submit '新規登録', class: 'btn btn-success' %>
 
 <% end %>
-
-
-
 
 
 <table class="table">
@@ -35,8 +36,8 @@
        <td><%= addresses.address %></td>
        <td><%= addresses.name %></td>
        <td>
-         <%= link_to "編集する",edit_public_address_path(addresses) ,class: "btn btn-secondary"%>
-         <%= link_to "削除する", public_address_path(addresses),class: "btn btn-secondary", method: :delete %>
+         <%= link_to "編集する",edit_public_address_path(addresses) ,class: "btn btn-success"%>
+         <%= link_to "削除する", public_address_path(addresses),class: "btn btn-danger", method: :delete %>
     <% end %>
   </tbody>
 </table>

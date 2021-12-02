@@ -5,6 +5,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+   @address = Address.find(params[:id])
   end
 
   def create
@@ -17,6 +18,13 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
+  # address = Address.find(params[:id])
+   #if address.update(address_params)
+    # redirect_to public_addresses_path
+   #else
+    # @customer = customer
+    # render :edit
+   #end
   end
 
   def destroy
@@ -28,6 +36,6 @@ class Public::AddressesController < ApplicationController
   private
     def address_params
       params.require(:address).permit(:address, :name, :postal_code)
-      end
+    end
 end
 

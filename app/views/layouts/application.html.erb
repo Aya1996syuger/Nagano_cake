@@ -11,45 +11,53 @@
 
   <body>
      <% if admin_signed_in? %>
-      <li class= "nav-item">
+      <nav class= "nav-item">
         <%= link_to "商品一覧", admin_items_path %>
-      </li>
-      <li class= "nav-item">
+      </nav>
+      <nav class= "nav-item">
         <%= link_to "会員一覧", admin_customers_path %>
-      </li>
-      <li class= "nav-item">
+      </nav>
+      <nav class= "nav-item">
         <%= link_to "注文履歴一覧", admin_path %>
-      <li class= "nav-item">
-        <%= link_to "ジャンル一覧", admin_genres_path%>
-      </li>
-      <li class= "nav-item">
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
+      </>
+        
+      <nav class= "nav-item">
+        <button type="button" class="btn btn-default navbar-btn">
+          <%= link_to "ジャンル一覧", admin_genres_path%>
+        </button>
+      </nav>
+      <nav class= "nav-item">
+        <button type="button" class="btn btn-default navbar-btn">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </button>
+      </nav>
 
     <% elsif customer_signed_in? %>
-      <li class= "nav-item">
-        <%= link_to "マイページ", public_customer_path(current_customer.id) %> 
-      </li>
-      <li class= "nav-item">
+
+      <nav class= "nav-item">
+        <%= link_to "マイページ", public_customer_path(current_customer.id) %>
+      </nav>
+      <nav class= "nav-item">
         <%= link_to "商品一覧", public_items_path %>
-      </li>
+      </nav>
       <!--li class= "nav-item">
         <!--%= link_to "カート", admin_path %-->
-      <li class= "nav-item">
+      <nav class= "nav-item">
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </nav>
 
-        <% else %>
-      <li class= "nav-item">
+    <% else %>
+      <nav class= "nav-item">
          <%= link_to "About", about_path %>
-      </li>
-      <li class= "nav-item">
+      </nav>
+      <nav class= "nav-item">
          <%= link_to "商品一覧" , admin_items_path %>
-      <li class= "nav-item">
+      <nav class= "nav-item">
         <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li class= "nav-item">
+      </nav>
+      <nav class= "nav-item">
         <%= link_to "ログイン", new_customer_session_path %>
-      </li>
+      </nav>
     <% end %>
 
     <%= yield %>
