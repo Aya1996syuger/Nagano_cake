@@ -1,7 +1,9 @@
-<h2>商品新規登録</h2>
-<!--div class="container px-10 px-sm-0">
+<h4>
+  <span class="title">商品新規投稿</span><br>
+</h4>
+<div class="container px-10 px-sm-0">
   <div class="row">
-    <div class="col-md-2 col-md-offset-5">
+    <div class="col-md-4 col-md-offset-3">
       <div class="center-block">
       <!-- form_with部分 -->
         <%= form_with model: @item, url:'/admin/items', local:true do |f| %>
@@ -11,23 +13,23 @@
           
           
           <%= f.label :name, '商品名' %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name ,placeholder: "商品名"%>
           
           <%= f.label :introduction, '商品説明' %>
-          　<%= f.text_area :introduction %>
+          　<%= f.text_area :introduction, placeholder: "商品説明" %>
+           
+          
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "-- 選択してください? --", class: 'form-control' %>
           
           
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択してください？", class: 'form-control' %>
-          
-          
-          <%= f.label :price, '税抜価格' %>
-          <%= f.text_field :price %>
+          <%= f.label :price, '税抜価格'%>
+          <%= f.text_field :price, placeholder: "1000" %>
           
           
           <%= f.radio_button :is_active, :true %>
-          <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+          <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %></br>
           <%= f.radio_button :is_active, :false %>
-          <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %></br>
+          <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
           
           <%=f.submit '新規登録', class: 'btn btn-success' %>
       <% end %>

@@ -1,4 +1,6 @@
-<h2>管理者</h2>
+<h2>
+  <span class="bg-light">管理者ログイン</span><br>
+</h2>
 
 <%= form_with model: @admin, url: admin_registration_path, local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
