@@ -84,3 +84,8 @@ group :development, :test do
 end
 
  gem 'enum_help'
+
+ gem 'will_paginate'
+ gem 'bootstrap-will_paginate'
+ 
+ gem 'kaminari'
