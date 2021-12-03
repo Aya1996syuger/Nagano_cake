@@ -16,3 +16,26 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.welcome{
+   text-align: center; 
+  }
+
+nav{
+  margin: 0 auto;
+  border-bottom: solid 0.7px #000000;
+  width: 100%;
+}
+
+.navlist {
+  text-align: right;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.navitem {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+  

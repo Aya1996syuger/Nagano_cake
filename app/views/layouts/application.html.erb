@@ -2,64 +2,76 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-     <% if admin_signed_in? %>
-      <nav class= "nav-item">
-        <%= link_to "商品一覧", admin_items_path %>
-      </nav>
-      <nav class= "nav-item">
-        <%= link_to "会員一覧", admin_customers_path %>
-      </nav>
-      <nav class= "nav-item">
-        <%= link_to "注文履歴一覧", admin_path %>
-      </>
-        
-      <nav class= "nav-item">
-        <button type="button" class="btn btn-default navbar-btn">
-          <%= link_to "ジャンル一覧", admin_genres_path%>
-        </button>
-      </nav>
-      <nav class= "nav-item">
-        <button type="button" class="btn btn-default navbar-btn">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-        </button>
-      </nav>
-
-    <% elsif customer_signed_in? %>
-
-      <nav class= "nav-item">
-        <%= link_to "マイページ", public_customer_path(current_customer.id) %>
-      </nav>
-      <nav class= "nav-item">
-        <%= link_to "商品一覧", public_items_path %>
-      </nav>
-      <!--li class= "nav-item">
-        <!--%= link_to "カート", admin_path %-->
-      <nav class= "nav-item">
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </nav>
-
-    <% else %>
-      <nav class= "nav-item">
-         <%= link_to "About", about_path %>
-      </nav>
-      <nav class= "nav-item">
-         <%= link_to "商品一覧" , admin_items_path %>
-      <nav class= "nav-item">
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </nav>
-      <nav class= "nav-item">
-        <%= link_to "ログイン", new_customer_session_path %>
-      </nav>
-    <% end %>
-
-    <%= yield %>
+        <nav>
+          <nav class="navbar-default">
+            <div class="navlist">
+              <% if admin_signed_in? %>
+                <div class="navitem">
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "商品一覧", admin_items_path %>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "会員一覧", admin_customers_path %>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "注文履歴一覧", admin_path %>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "ジャンル一覧", admin_genres_path%>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                  </button>
+                </div>
+              <% elsif customer_signed_in? %>
+                <div class="navitem">
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "マイページ", public_customer_path(current_customer.id), class: 'btn btn-outline-info' %>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "商品一覧", public_items_path ,class: 'btn btn-outline-info'%>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "カート", public_cart_items_path ,class: 'btn btn-outline-info'%>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-outline-info' %>
+                  </button>
+              
+                  <div class= "welcome">
+                    ようこそ！<%= current_customer.last_name %>さん
+                  </div>
+                </div>
+  
+              <% else %>
+                <div class="navitem">
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "About", about_path,class: 'btn btn-outline-info' %>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "商品一覧" , admin_items_path,class: 'btn btn-outline-info' %>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-outline-info' %>
+                  </button>
+                  <button type="button" class="btn btn-default navbar-btn">
+                    <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-outline-info' %>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+          </nav>
+        </nav>
+     
+  </nav>
+        <%= yield %>
   </body>
-</html>
+  </html>
