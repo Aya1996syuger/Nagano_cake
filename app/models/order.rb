@@ -1,7 +1,4 @@
 class Order < ApplicationRecord
   enum payment_method: { credit_card: 0, transfer: 1 }
-  Order.payment_methods.key(0)
-  Order.payment_methods.key(1)
-  Order.payment_methods[:credit_card]
-  Order.payment_methods[:transfer]
+  enum adress: { my_address: 0, registered_address: 1, new_address: 2 }
 end

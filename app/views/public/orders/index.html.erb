@@ -1,11 +1,14 @@
-<h1>注文情報入力</h1>
-<%= form_with model: @order, url:public_orders_path, local: true do |f| %>
-
-　<h6>支払方法</h6>
-   
+<h4>
+ <span class="title">注文情報入力</span><br>
+</h4>
+  <%= form_with model: @order, url:public_orders_path, local: true do |f| %>
+  <h6>支払方法</h6>
+    <%=f.collection_radio_buttons :payment_method, Order.payment_methods_i18n, :first, :last %>
   <h6>お届け先</h6>
+    <%=f.collection_radio_buttons :adress, Order.adresses_i18n, :first, :last %>
 
-   
  <% end %>
+
+
 
 
