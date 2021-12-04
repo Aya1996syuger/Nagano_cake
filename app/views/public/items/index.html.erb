@@ -2,25 +2,17 @@
   <span class="title">商品一覧</span><br>
 </h4>
 
- 
-  <% @items.each do |item| %>
-    
-    <%= attachment_image_tag item, :image, :fill, 150, 150 %></br>
-    <%= link_to public_item_path(item.id) do%>
-    <%= item.name %></br>
-     <% end %>
-    <%= item.price %></br>
-  <% end %>
-  
-  <%= paginate @posts %>
-  
-  
-  
-  
-  
+ <div class= "flex">
+  <!--div class= "flex-item"-->
+      <% @items.each do |item| %>
+          <%= attachment_image_tag item, :image, :fill, 150, 150 %></br>
+          <%= link_to public_item_path(item.id) do%>
+            <%= item.name %></br>
+          <% end %>
+            <%= item.price %></br>
+       <% end %>
+    <!--/div-->
+  </div>
 
 
-
-
-
-
+  <%= paginate @items %>
