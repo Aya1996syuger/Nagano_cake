@@ -1,4 +1,6 @@
-<h5><%= @customer.last_name%><%= @customer.first_name %>さんの会員詳細</h5>
+<h5>
+ <span class="title"><%= @customer.last_name%><%= @customer.first_name %>さんの会員詳細</span>
+</h5>
 
 <h6>会員ID</h2>
 <p><%= @customer.id %></6>
@@ -19,4 +21,4 @@
     退会
    <% end %>
 
-<%= link_to "編集する",edit_admin_customer_path(@customer) %>
+<%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success" %>
