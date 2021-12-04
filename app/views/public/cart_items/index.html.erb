@@ -1,24 +1,25 @@
-<h1>ショッピングカート</h1>
-    <table>
+<h4>ショッピングカート</h4>
+    <table class="table-bordered">
         <thead>
             <th>商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
-            <th></th>
         </thead>
         <tbody>
             <% @cart_items.each do |cart_item| %>
                 <tr>
-                <td>
-                    <%= attachment_image_tag cart_item.item, :image, :fill, 150, 150 %>
-                　　<%= cart_item.item.name %>
-                </td>
-                <td><%= (cart_item.item.price * 1.1).floor %></td>
-                <td><%= cart_item.amount %></td>
-                <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
-                <td><!--% @price +=  (cart_item.item.price * 1.1).floor * cart_item.amount %--></td>
-                <td><%= link_to "Destroy", public_cart_items_path, class: "btn btn-secondary" , method: :delete %></td>
+                    <td>
+                        <%= attachment_image_tag cart_item.item, :image, :fill, 80, 80 %>
+                    　　<%= cart_item.item.name %>
+                    </td>
+                    <td><p><%= (cart_item.item.price * 1.1).floor %></p></td>
+                    <td>
+                            <%= cart_item.amount %>
+                    </td>
+                    <td><p><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p></td>
+                    <!--% @price +=  (cart_item.item.price * 1.1).floor * cart_item.amount %-->
+                    <td><%= link_to "削除する", public_cart_item_path(cart_item), class: "btn btn-secondary" , method: :delete %></td>
                 </tr>
             <% end %>
         </tbody>

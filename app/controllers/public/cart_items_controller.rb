@@ -23,10 +23,10 @@ class Public::CartItemsController < ApplicationController
     @item.destroy
     redirect_to public_cart_items_path
   end
-  
-  
+
+
   private
   def cart_items_params
-  params.require(:cart_item).permit(:customer_id, :item_id, :amount)
+  params.require(:cart_item).permit(:customer_id, :item_id, :amount,)
   end
 end

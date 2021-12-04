@@ -3,15 +3,15 @@
 </h4>
 
  <div class= "flex">
-  <!--div class= "flex-item"-->
       <% @items.each do |item| %>
-          <%= attachment_image_tag item, :image, :fill, 150, 150 %></br>
+        <div class= "flex-item">
+          <%= attachment_image_tag item, :image, :fill, 200, 200 %></br>
           <%= link_to public_item_path(item.id) do%>
-            <%= item.name %></br>
+          <p><%= item.name %></p>
           <% end %>
-            <%= item.price %></br>
-       <% end %>
-    <!--/div-->
+          <p>¥<%= item.price %></p>
+         </div>
+      <% end %>
   </div>
 
 
