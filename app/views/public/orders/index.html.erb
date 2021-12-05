@@ -5,7 +5,7 @@
   <h6>支払方法</h6>
     <%=f.collection_radio_buttons :payment_method, Order.payment_methods_i18n, :first, :last %>
   <h6>お届け先</h6>
-    <%=f.collection_radio_buttons :adress, Order.adresses_i18n, :first, :last %>
+    <%=f.collection_radio_buttons :address, Order.addresses_i18n, :first, :last %>
 
  <% end %>
 

@@ -2,7 +2,7 @@
 <span class="title">配送先編集</span>
 </h4>
 
-  <%= form_with model:@address,url:public_addresses_path, local:true do |f| %>
+  <%= form_with model:@address,url:public_address_path(@address),method: :patch, local:true do |f| %>
     <div class="form-group">
     <label for="postal_code">郵便番号(ハイフンなし）</label></br>
       <%= f.text_field :postal_code %>
@@ -19,7 +19,8 @@
     </div>
 
     <div class="form-group">
-      <%= link_to "保存内容を変更する", public_address_path(@address),class: "btn btn-success", method: :update %>
+      <%#= link_to "保存内容を変更する", public_address_path(@address),class: "btn btn-success", method: :patch %>
+      <%= f.submit '保存内容を変更する',class: "btn btn-success" %>
     </div>
   <% end %>
 
