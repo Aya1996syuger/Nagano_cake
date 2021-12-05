@@ -2,22 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.top{
-  height: 300px;
+.main-visual{
+  height: 500px;
   width: 100%;
+  display: flex; /* Flexboxの利用 */
+  justify-content: center;
+}
+
+.top{
+  height: 500px;
+  width: 70%;
+  margin: 15px;
   background-image: image-url('top.png');
   background-size: cover;
   background-position: center;
   text-align: center;
   line-height:75px;
   color: #ffffff;
-  
+}
+
+.genre-search{
+  width: 30%;
+  height: 500px;
+  margin: 15px;
+}
+
+.flex-top{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1px;
+  margin-left: auto;
+  width: 95%;
 }
 
 .new-item{
-  height: 600px;
+  height: 500px;
   width: 100%;
+  
 }
+
 
 
 
