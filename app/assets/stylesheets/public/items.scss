@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .title{
-  margin-top: 30px;
+  margin-top: 15px;
 }
 .text-green{
   color: #008000;
@@ -22,13 +22,15 @@
 .flex{
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
 }
 
 .flex-item{
-  margin:20px;
+  margin: 10px;
 
 }
 
 .pagination {
   justify-content: center;
 }
+
