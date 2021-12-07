@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
     @cart_item = CartItem.new
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
   def create
@@ -19,24 +19,23 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @item = CartItem.find(params[:id])
     @item.destroy
     redirect_to public_cart_items_path
-    
-    #@cart_items = current_cart
-    #@cart_items.destroy
-    #session[:cart_item_id] = nil
-  #  respond_to do |format|
-   #   format.html { redirect_to market_url, notice: 'カートが空になりました。' }
-    #  format.json { head :no_content }
-  #  end
+
+   
+    session[:cart_item_id] = nil
+    respond_to do |format|
+      format.html { redirect_to market_url, notice: 'カートが空になりました。' }
+      format.json { head :no_content }
+    end
   end
 
-  
+
 
 
   private
   def cart_items_params
-  params.require(:cart_item).permit(:customer_id, :item_id, :amount,)
+   params.require(:cart_item).permit(:customer_id, :item_id, :amount,)
   end
 end
