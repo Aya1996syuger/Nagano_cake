@@ -22,7 +22,8 @@ Rails.application.routes.draw do
         resources :orders, only: [:new, :index, :create]
         patch '/orders/confirm/:id' => 'orders#confirm', as: 'order_confirm'
         get '/orders/thanks' => 'orders#thanks', as: 'order_thanks'
-        resources :cart_items, only: [:index ,:update, :destroy, :create]
+        resources :cart_items, only: [:index ,:update, :destroy, :create, :update]
+        delete '/cart_items' => 'cart_items#destroyall',as: 'destroy_all'
         resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
     end

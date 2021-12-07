@@ -30,14 +30,18 @@
    </thead>
 
 　 <tbody>
-　　<% @addresses.each do |addresses| %>
-　　　<tr>
+
+　  <% @addresses.each do |addresses| %>
+　  <tr>
        <td><%= addresses.postal_code %></td>
        <td><%= addresses.address %></td>
        <td><%= addresses.name %></td>
        <td>
+
          <%= link_to "編集する",edit_public_address_path(addresses) ,class: "btn btn-success"%>
          <%= link_to "削除する", public_address_path(addresses),class: "btn btn-danger", method: :delete %>
     <% end %>
+    　</td>
+    </tr>
   </tbody>
 </table>

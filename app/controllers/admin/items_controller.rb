@@ -5,7 +5,6 @@ class Admin::ItemsController < ApplicationController
 
   def create
      @item = Item.new(item_params)
-     #@item.genre_id = @genre.id
      @item.save
      redirect_to admin_items_path
   end
@@ -26,7 +25,7 @@ class Admin::ItemsController < ApplicationController
   def update
      @item = Item.find(params[:id])
      if @item.update(item_params)
-        redirect_to admin_item_path(@item.id)
+        redirect_to public_items_path
      else
        @items = Item.all
        render :edit

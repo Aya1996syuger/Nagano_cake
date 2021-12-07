@@ -22,14 +22,24 @@ class Public::CartItemsController < ApplicationController
     @item = CartItem.find(params[:id])
     @item.destroy
     redirect_to public_cart_items_path
-
-   
-    session[:cart_item_id] = nil
-    respond_to do |format|
-      format.html { redirect_to market_url, notice: 'カートが空になりました。' }
-      format.json { head :no_content }
-    end
   end
+
+  def destroyall
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
+    redirect_to public_cart_items_path
+  end
+  
+  def update
+    @item = CartItem.find(params[:id])
+     if @item.update(cart_items_params)
+        redirect_to public_cart_items_path(@item.id)
+     else
+       @cart_items = current_customer.cart_items
+       render :index
+     end
+  end
+  
 
 
 

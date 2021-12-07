@@ -15,7 +15,10 @@
                     </td>
                     <td><p><%= (cart_item.item.price * 1.1).floor %></p></td>
                     <td>
-                            <%= cart_item.amount %>
+                        <%= form_with model: cart_item, url: public_cart_item_path(cart_item), local:true do |f| %>
+                            <%= f.select :amount,  *[1..10] %>
+                            <%= f.submit '変更', class: 'btn btn-success' %>
+                        <% end %>
                     </td>
                     <td><p><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p></td>
                     <!--% @price +=  (cart_item.item.price * 1.1).floor * cart_item.amount %-->
@@ -28,4 +31,4 @@
             <%= link_to "情報入力画面に進む", new_public_order_path ,class: "btn btn-success"  %></td>
 
 
-            <%= submit 'カートを空にする', @cart_items, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: 'fbtn' %>
+            <%= link_to "カートを空にする",  public_destroy_all_path, class: "btn btn-danger" , method: :delete %>
