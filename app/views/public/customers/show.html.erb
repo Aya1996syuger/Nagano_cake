@@ -5,22 +5,30 @@
 
 
  <%= link_to "編集する", edit_public_customer_path(@customer), class: "btn btn-success" %>
+<table class="row1">
+ <thead>
+  <tr>
+   <th>氏名</th>
+   <th>カナ</th>
+   <th>郵便番号</th>
+   <th>住所</th>
+   <th>電話番号</th>
+   <th>メールアドレス</th>
+   <th colspan="6"></th>
+  </tr>
+ </thead>  
+ 
+ <tbody>
+ <tr>
+ <td><%= @customer.last_name %><%= @customer.first_name %>
+ <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+ <td><%= @customer.postal_code %></td>
+ <td><%= @customer.address %></td>
+ <td><%= @customer.telephone_number %></td>
+ <td><%= @customer.email %></td>
+ </tr>
+ <tbody>
+</table>
 
 
-
-<h6>氏名</h6>
-<p><%= @customer.last_name %><%= @customer.first_name %></p>
-<h6>カナ</h6>
-<p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
-<h6>郵便番号</h6>
-<p><%= @customer.postal_code %></p>
-<h6>住所</h6>
-<p><%= @customer.address %></p>
-<h6>電話番号</h6>
-<p><%= @customer.telephone_number %></p>
-
-<h6>メールアドレス</h6>
-<p><%= @customer.email %></p>
-
-
- <h5>配送先<%= link_to "一覧を見る", public_addresses_path,class: "btn btn-primary"  %></h5>
+<h5>配送先<%= link_to "一覧を見る", public_addresses_path,class: "btn btn-primary"  %></h5>

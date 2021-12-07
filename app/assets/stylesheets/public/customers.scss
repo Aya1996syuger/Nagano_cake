@@ -2,14 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-form dl dt{
-  width: 200px;
-  float:left;
-  clear:both;
-}
 
 .button{
 height:30px;
 width:100px;
 }
 
+.row1{
+  margin: 30px 30px;
+}
+
+table.row1th,
+table.row1 td{
+  width: 100%;
+  display: block;
+ 
+ 
+}

@@ -6,7 +6,7 @@
     <div class="col-md-2 col-md-offset-8">
       <div class="center-block">
       <!-- form_with部分 -->
-        <%= form_with model: @item, url:'/admin/items', local:true do |f| %>
+        <%= form_with model: @item, url:admin_items, local:true do |f| %>
 
           <%= f.label :image, '商品画像' %>
           <%= f.attachment_field :image %>
