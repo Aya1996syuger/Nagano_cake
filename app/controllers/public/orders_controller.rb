@@ -5,8 +5,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-     @order = Order.find(params[:id])
-     @cart_items = Item.all
+    @cart_items = current_customer.cart_items
+    @order = Order.new(order_params)
+    
   end
 
   def creat
