@@ -17,6 +17,8 @@ class Public::CartItemsController < ApplicationController
       redirect_to public_cart_items_path
     end
   end
+  
+  
 
   def destroy
     @item = CartItem.find(params[:id])
@@ -39,7 +41,6 @@ class Public::CartItemsController < ApplicationController
        render :index
      end
   end
-  
 
 
 

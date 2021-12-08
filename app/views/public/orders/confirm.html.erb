@@ -1,4 +1,6 @@
 <h1>注文情報確認画面</h1>
+   
+<table>
    <thead>
         <th>商品名</th>
         <th>単価(税込)</th>
@@ -15,9 +17,11 @@
                   <%= attachment_image_tag cart_item.item, :image, :fill, 80, 80 %>
               　　<%= cart_item.item.name %>
               </td>
-              <td><p><%= (cart_item.item.price * 1.1).floor %></p></td>
-              <td><p><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p></td>
+              <td><%= (cart_item.item.price * 1.1).floor %></td>
+              <td><%= cart_item.amount %>
+              <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
       <% end %>
   </tbody>
+</table>
 
 
