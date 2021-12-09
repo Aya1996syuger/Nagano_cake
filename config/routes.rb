@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'order_details/show'
+  end
+  namespace :admin do
+    get 'order_detail/show'
+  end
   namespace :public do
     get 'addresses/index'
     get 'addresses/edit'
@@ -19,7 +25,7 @@ Rails.application.routes.draw do
          get '/unsubscribe/customers/:id' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
          patch '/withdroaw/customers/:id' => 'customers#withdraw', as: 'withdraw_customer'
         resources :items, only: [:index, :show]
-        resources :orders, only: [:new, :index, :create ]
+        resources :orders, only: [:new, :index, :create, :show ]
         patch '/orders' => 'orders#create' , as: 'order_create'
         post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
         get '/orders/thanks' => 'orders#thanks', as: 'order_thanks'
@@ -34,5 +40,6 @@ Rails.application.routes.draw do
         resources :genres, only: [:index, :create, :edit, :update]
         resources :items
         resources :customers
+        resources :order_details, onle: [:show]
     end
 end
