@@ -19,7 +19,7 @@ Rails.application.routes.draw do
          get '/unsubscribe/customers/:id' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
          patch '/withdroaw/customers/:id' => 'customers#withdraw', as: 'withdraw_customer'
         resources :items, only: [:index, :show]
-        resources :orders, only: [:new, :index ]
+        resources :orders, only: [:new, :index, :create ]
         patch '/orders' => 'orders#create' , as: 'order_create'
         post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
         get '/orders/thanks' => 'orders#thanks', as: 'order_thanks'
