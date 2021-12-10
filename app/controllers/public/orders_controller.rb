@@ -12,11 +12,11 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
-      @order.address = address.address
+      #@order.address = address.address
       @order.postal_code = address.postal_code
       @order.name = address.name
     elsif params[:order][:select_address] == "2"
-      @order.address = params[:order][:address]
+      #@order.address = params[:order][:address]
       @order.postal_code = params[:order][:postal_code]
       @order.name = params[:order][:name]
     end
@@ -42,12 +42,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-   @order = current_customer.orders
-   @orders = Order.all
+   @order = current_customer.order
    @cart_items = current_customer.cart_items
   end
 
   def show
+    @order = Order.find(params[:id])
+    @cart_items = current_customer.cart_items
   end
 
   private

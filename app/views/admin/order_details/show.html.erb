@@ -1,2 +1,42 @@
-<h1>Admin::OrderDetails#show</h1>
-<p>Find me in app/views/admin/order_details/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+
+   
+      <h5>購入者<%= @order.created_at.strftime('%Y/%m/%d') %></h5>
+
+      <h5>
+        配送先
+        <%= @order.postal_code %>
+        <%#= @order.address %></br>
+        <%= @order.name %>
+      </h5>
+      
+      <h5>支払方法 <%= @order.payment_method %></h5>
+      
+     
+  <h6>注文内容</h6>
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+      <th>入金ステータス</th>
+    
+    </tr>
+   </thead>
+
+   <tbody>
+      <% @cart_items.each do |cart_item| %>
+          <tr>
+              <td>
+              　　<%= cart_item.item.name %>
+              </td>
+              <td><%= (cart_item.item.price * 1.1).floor %></td>
+              <td><%= cart_item.amount %>
+              <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
+              <td></td>
+          </tr>
+      <% end %>
+    </tbody>
+</table>
