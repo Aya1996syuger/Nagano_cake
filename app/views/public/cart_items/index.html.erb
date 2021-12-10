@@ -7,7 +7,7 @@
             <th>小計</th>
         </thead>
         <tbody>
-            <% @total_payment = 0 %>
+            <% @items_payment = 0 %>
             <% @cart_items.each do |cart_item| %>
                 <tr>
                     <td>
@@ -22,11 +22,11 @@
                         <% end %>
                     </td>
                     <td><p><%= cart_item.subtotal%></p></td>
-                       <% @total_payment +=  cart_item.subtotal %>
+                       <% @items_payment +=  cart_item.subtotal %>
                     <td><%= link_to "削除する", public_cart_item_path(cart_item), class: "btn btn-danger" , method: :delete %></td>
                 </tr>
             <% end %>
-            <%= @total_payment %>
+            <%= @items_payment %>
 
         </tbody>
     </table>
