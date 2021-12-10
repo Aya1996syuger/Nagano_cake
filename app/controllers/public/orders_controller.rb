@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.name = params[:order][:name]
     end
-
+    
   end
 
 
@@ -42,18 +42,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-   @orders = Order.all
-   @order = current_customer.cart_items
-   @cart_items = current_customer.cart_items
+		@customer = current_customer
+		@orders = @customer.orders
+    @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
   def show
-    @order = current_customer
-    @cart_items = current_customer.cart_items
+	 	@order = Order.find(params[:id])
+	 	@cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
   private
-    def order_params
-    params.require(:order).permit( :payment_method,  :postal_code, :name)
-    end
+  
+  def order_params
+   params.require(:order).permit(
+	 		:customer_id, :payment_method, :postal_code, :shopping_cost, :total_payment, :name)
+  end
 end

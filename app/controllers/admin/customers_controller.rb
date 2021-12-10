@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.page(params[:page]).per(3)
+    @customers = Customer.page(params[:page]).per(12)
     @customer = Customer.new
   end
 
@@ -36,4 +36,3 @@ class Admin::CustomersController < ApplicationController
     permit(:first_name, :last_name, :last_name_kana,:email, :adress, :telephone_number ,:is_active)
   end
 end
-

@@ -1,4 +1,6 @@
-<h1>注文履歴</h1>
+<h4>
+<span class="title">注文履歴一覧</span>
+</h4>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -13,14 +15,23 @@
    </thead>
 
   <tbody>
+    <% @items_payment = 0 %>
+    <% @shopping_cost = 800 %>
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= order.postal_code %><%#= @order.address %><%= order.name %></td>
-      <td></td>
-      <td><%= order.total_payment %></td>
+          <% @cart_items.each do |cart_item| %>
+  					<td><%= cart_item.item.name %></td>
+  					<p><% cart_item.subtotal%></p>
+                <% @items_payment +=  cart_item.subtotal %>
+  				<% end %>
+  				  <td><%= @shopping_cost + @items_payment %></td>
+  				
+
+      
       <td>ステータス</td>
-      <td><%= link_to "詳細を見る", public_order_path(@order),class: "btn btn-primary"  %></td>
+      <td><%= link_to "詳細を見る", public_order_path(order),class: "btn btn-primary"  %></td>
     <% end %>
     </tr>
   </tbody>

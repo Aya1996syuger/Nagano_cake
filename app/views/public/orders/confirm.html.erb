@@ -16,11 +16,10 @@
                   <%= attachment_image_tag cart_item.item, :image, :fill, 80, 80 %>
               　　<%= cart_item.item.name %>
               </td>
-              <td><%= (cart_item.item.price * 1.1).floor %></td>
-              <td><%= cart_item.amount %>
-              <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
-              <p><%#= cart_item.subtotal%></p>
-            <!--% @items_payment +=  cart_item.subtotal %-->
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal%></td>
+            <% @items_payment +=  cart_item.subtotal %>
       <% end %>
   </tbody>
  </table>
