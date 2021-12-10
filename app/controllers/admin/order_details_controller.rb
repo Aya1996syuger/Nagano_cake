@@ -1,6 +1,5 @@
 class Admin::OrderDetailsController < ApplicationController
   def show
-      @order = Order.find(params[:id])
-      @cart_items = current_customer.cart_items
+   @order_detail = OrderDetails.find(params[:id])
   end
 end

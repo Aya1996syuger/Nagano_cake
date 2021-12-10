@@ -1,52 +1,89 @@
 <h1>注文履歴詳細</h1>
 
   <h6>注文情報</h6>
-  <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>支払方法</th>
-      <th>ステータス</th>
-      <th></th>
-      <th colspan="5"></th>
-    </tr>
-   </thead>
- 
-  <tbody>
-    <tr>
-      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= @order.postal_code %></br>
-          <%= @order.address %></br>
-          <%#= @order.name %>
-      </td>
-      <td><%#= @order.payment_method %></td>
-      <td><%#= order.staus %></td>
-    </tr>
-  </tbody>
- </table>
-
- <h6>注文内容</h6>
- <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>個数</th>
-      <th>小計</th>
-      <th></th>
-      <th colspan="6"></th>
-    </tr>
-   </thead>
-
-   <tbody>
-      <% @cart_items.each do |cart_item| %>
+    <div class="order_info">
+      <table class="table table-bordered">
+        <thead>
           <tr>
-              <td>
-              　　<%= cart_item.item.name %>
-              </td>
-              <td><%= (cart_item.item.price * 1.1).floor %></td>
-              <td><%= cart_item.amount %>
-              <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
-      <% end %>
-</table>
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>支払方法</th>
+          <th>ステータス</th>
+          <th></th>
+          <th colspan="5"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= @order.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <td>
+              <%= @order.postal_code %></br>
+              <%= @order.address %></br>
+              <%#= @order.name %>
+            </td>
+            <td>
+              <%#= @order.payment_method %>
+            </td>
+            <td>
+              <%#= order.staus %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <h6>注文内容</h6>
+    <div class ="order_contents">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <% @items_payment = 0 %>
+            <% @shopping_cost = 800 %>
+              <tr>
+                <td>
+                　　<%= cart_item.item.name %>
+                </td>
+                <td>
+                  <%= (cart_item.item.price * 1.1).floor %>
+                </td>
+                <td>
+                  <%= cart_item.amount %>
+                </td>
+                <td>
+                  <%= (cart_item.item.price * 1.1).floor * cart_item.amount %>
+                </td>
+                <p><%#= cart_item.subtotal%></p>
+                <%# @items_payment +=  cart_item.subtotal %>
+          <% end %>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+
+
+  <h6>請求額</h6>
+    <div class="order_proce">
+      <table class="table table-bordered">
+        <thead>
+          <th>送料</th>
+          <th>商品合計</th>
+          <th>請求額</th>
+        </thead>
+        <tbody>
+          <td><%= @shopping_cost %></td>
+          <td><%= @items_payment %></td>
+          <td><%= @shopping_cost + @items_payment %></td>
+        </tbody>
+      </table>
+    </div>

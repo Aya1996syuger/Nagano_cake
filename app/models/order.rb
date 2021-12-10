@@ -3,4 +3,6 @@ class Order < ApplicationRecord
   enum address: { my_address: 0, registered_address: 1, new_address: 2 }
   
   belongs_to :customer
+   belongs_to :order_detail
+  
 end

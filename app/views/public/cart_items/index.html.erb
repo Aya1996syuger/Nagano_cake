@@ -21,8 +21,8 @@
                             <%= f.submit '変更', class: 'btn btn-success' %>
                         <% end %>
                     </td>
-                    <td><p><%= cart_item.subtotal%></p></td>
-                       <% @items_payment +=  cart_item.subtotal %>
+                    <td><p><%#= cart_item.subtotal%></p></td>
+                       <!--% @items_payment +=  cart_item.subtotal %-->
                     <td><%= link_to "削除する", public_cart_item_path(cart_item), class: "btn btn-danger" , method: :delete %></td>
                 </tr>
             <% end %>

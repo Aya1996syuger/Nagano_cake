@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_item = CartItem.new
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    
+
   end
 
   def create
@@ -18,8 +18,8 @@ class Public::CartItemsController < ApplicationController
       redirect_to public_cart_items_path
     end
   end
-  
-  
+
+
 
   def destroy
     @item = CartItem.find(params[:id])
@@ -32,7 +32,7 @@ class Public::CartItemsController < ApplicationController
     @cart_items.destroy_all
     redirect_to public_cart_items_path
   end
-  
+
   def update
     @item = CartItem.find(params[:id])
      if @item.update(cart_items_params)
