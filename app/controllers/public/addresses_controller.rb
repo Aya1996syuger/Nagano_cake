@@ -1,11 +1,15 @@
 class Public::AddressesController < ApplicationController
+ #配送先登録・一覧
  def index
    @address = Address.new
    @addresses = Address.all
+
  end
 
+#配送先編集
  def edit
   @address = Address.find(params[:id])
+
  end
 
  def create
@@ -15,6 +19,7 @@ class Public::AddressesController < ApplicationController
    redirect_to public_addresses_path
  end
 
+#更新
  def update
    @address = Address.find(params[:id])
   if @address.update(address_params)
@@ -25,6 +30,7 @@ class Public::AddressesController < ApplicationController
   end
  end
 
+#配送先削除
  def destroy
   @address = Address.find(params[:id])
   @address.destroy

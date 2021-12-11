@@ -19,8 +19,6 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
-
-
   def destroy
     @item = CartItem.find(params[:id])
     @item.destroy
@@ -42,8 +40,6 @@ class Public::CartItemsController < ApplicationController
        render :index
      end
   end
-
-
 
 
   private

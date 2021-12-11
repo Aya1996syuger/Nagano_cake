@@ -24,9 +24,11 @@
           <% @cart_items.each do |cart_item| %>
   					<td><%= cart_item.item.name %></td>
   					<p><% cart_item.subtotal%></p>
-                <% @items_payment +=  cart_item.subtotal %>
+                <% @items_payment = cart_item.subtotal %>
   				<% end %>
-  				  <td><%= @shopping_cost + @items_payment %></td>
+  				  <td><%= @shopping_cost + @items_payment  %>
+  				
+  				  </td>
   				
 
       

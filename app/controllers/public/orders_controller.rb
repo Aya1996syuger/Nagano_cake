@@ -29,9 +29,9 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
       @order.save
+      
      redirect_to public_order_thanks_path
   end
-
 
 
 
