@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AddDeviseToCustomers < ActiveRecord::Migration[5.2]
-  def self.up
+  def change
     create_table :customers do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -34,7 +34,7 @@ class AddDeviseToCustomers < ActiveRecord::Migration[5.2]
 
 
       # Uncomment below if timestamps were not included in your original model.
-      
+
        t.string :last_name
        t.string :first_name
        t.string :last_name_kana
@@ -43,7 +43,7 @@ class AddDeviseToCustomers < ActiveRecord::Migration[5.2]
        t.string :address
        t.string :telephone_number
        t.boolean :is_active
-      
+
        t.timestamps null: false
     end
 
@@ -53,9 +53,4 @@ class AddDeviseToCustomers < ActiveRecord::Migration[5.2]
     # add_index :customers, :unlock_token,         unique: true
   end
 
-  def self.down
-    # By default, we don't want to make any assumption about how to roll back a migration when your
-    # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
-  end
 end
