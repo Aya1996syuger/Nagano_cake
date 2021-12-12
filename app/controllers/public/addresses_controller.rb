@@ -2,6 +2,7 @@ class Public::AddressesController < ApplicationController
  #配送先登録・一覧
  def index
    @address = Address.new
+  
    @addresses = Address.all
 
  end

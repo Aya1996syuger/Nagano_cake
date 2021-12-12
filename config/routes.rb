@@ -1,26 +1,19 @@
 Rails.application.routes.draw do
 
 
-  namespace :admin do
-    get 'order_details/show'
-  end
-  namespace :admin do
-    get 'order_detail/show'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
+
+
+
     devise_for :customers
     devise_for :admins,controllers: {sessions: 'admins/sessions' }
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    root to: 'public/homes#top'
-    get '/about' => 'public/homes#about'
-    get '/admin' => 'admin/homes#top'
 
+    get '/about' => 'public/homes#about'
+    root to: 'public/homes#top'
 
     namespace :public do
+
         resources :customers, only:[:show, :edit, :update ]
          get '/unsubscribe/customers/:id' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
          patch '/withdroaw/customers/:id' => 'customers#withdraw', as: 'withdraw_customer'
@@ -31,14 +24,18 @@ Rails.application.routes.draw do
         resources :cart_items, only: [:index ,:update, :destroy, :create, :update]
         delete '/cart_items' => 'cart_items#destroyall',as: 'destroy_all'
         resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+        get 'addresses/index'
+        get 'addresses/edit'
 
     end
 
     namespace :admin do
+        root to: 'homes#top'
         resources :homes
         resources :genres, only: [:index, :create, :edit, :update]
         resources :items
         resources :customers
         resources :order_details, only: [:show]
+        get 'order_details/show'
     end
 end
