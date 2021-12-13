@@ -36,6 +36,10 @@
               <td><%= cart_item.amount %>
               <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
               <td><% if customer.order_id == true %>
+              <p class="text-green">有効</p>
+           <% else %>
+              <p class="text-gray">退会</p>
+           <% end %></td>
           </tr>
       <% end %>
     </tbody>

@@ -12,9 +12,9 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
-      @order.address = address.address
-      @order.postal_code = address.postal_code
-      @order.name = address.name
+      #@order.address = address.address
+      #@order.postal_code = address.postal_code
+      #@order.name = address.name
     elsif params[:order][:select_address] == "2"
       @order.address = params[:order][:address]
       @order.postal_code = params[:order][:postal_code]
@@ -28,10 +28,15 @@ class Public::OrdersController < ApplicationController
   def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
-      @order.save
-      
-     redirect_to public_order_thanks_path
+       @cart_items = CartItem.where(customer_id: current_customer.id)
+      if @order.save
+        @cart_items.destroy_all
+       redirect_to public_order_thanks_path
+     else
+       render [:new]
+     end
   end
+
 
 
 
