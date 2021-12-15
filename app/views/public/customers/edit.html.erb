@@ -4,48 +4,66 @@
 
 <%= form_with model:@customer,url:public_customer_path(@customer), local:true do |f| %>
 
- <div class="form-group">
-  <label for="last_name">名前</label></br>
-  <%= f.text_field :last_name %>
- </div>
-
- <div class="form-group">
-  <label for="first_name"></label></br>
-  <%= f.text_field :first_name %>
- </div>
-
- <div class="form-group">
-  <label for="last_name_kana">フリガナ</label></br>
-  <%= f.text_field :last_name_kana %>
- </div>
-
- <div class="form-group">
-  <label for="first_name_kana"></label></br>
-  <%= f.text_field :first_name_kana %>
- </div>
-
- <div class="form-group">
-  <label for="postal_code">郵便番号</label></br>
-  <%= f.text_field :postal_code %>
- </div>
-
- <div class="form-group">
-  <label for="address">住所</label></br>
-  <%= f.text_field :address %>
- </div>
-
-
- <div class="form-group">
-  <label for="telephone_number">電話番号</label></br>
-  <%= f.text_field :telephone_number %>
- </div>
-
- <div class="form-group">
-  <label for="email">メールアドレス</label></br>
-  <%= f.text_field :email %>
- </div>
-
-
+<table class="table table-borderless">
+ <tr>
+  <th>
+   <label for="last_name">氏名</label>
+   <label for="first_name"></label>
+  </th>
+  <td>
+   <%= f.text_field :last_name %>
+   <%= f.text_field :first_name %>
+  </td>
+ </tr>
+ 
+ <tr>
+  <th>
+   <label for="last_name_kana">フリガナ</label></br>
+   <label for="first_name_kana"></label></br>
+  </th>
+  <td>
+   <%= f.text_field :last_name_kana %>
+   <%= f.text_field :first_name_kana %>
+  </td>
+ </tr>
+ 
+ 
+ <tr>
+  <th>
+   <label for="postal_code">郵便番号</label></br>
+  </th>
+  <td>
+   <%= f.text_field :postal_code %>
+  </td>
+ </tr>
+ 
+ <tr>
+  <th>
+   <label for="address">住所</label></br>
+  </th>
+  <td>
+   <%= f.text_field :address %>
+  </td>
+ </tr>
+ 
+ <tr>
+  <th>
+   <label for="telephone_number">電話番号</label></br>
+  </th>
+  <td>
+   <%= f.text_field :telephone_number %>
+  </td>
+ </tr>
+ 
+ <tr>
+  <th>
+   <label for="email">メールアドレス</label></br>
+  </th>
+  <td>
+   <%= f.text_field :email %>
+  </td>
+ </tr>
+</table>
 
  <div class="form-group">
   <%= f.submit '変更内容保存', class: "btn btn-success" %>

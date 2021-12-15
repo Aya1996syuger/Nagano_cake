@@ -1,13 +1,12 @@
 class Admin::OrderDetailsController < ApplicationController
   def show
-      @order = Order.all
-      @order_details = OrderDerails.all
-
+      @order_detail = OrderDetail.find(params[:id])
+      @order = @order_detail.order
   end
 
   private
-   def order_params
-    params.require(:order).permit( :customer_id, :postal_code,:address, :name, :payment_method, :shopping_cost, :total_payment)
+   def order_detail_params
+    params.require(:order_detail).permit( :item_id, :order_id, :price, :amount )
    end
 
 end

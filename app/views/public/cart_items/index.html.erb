@@ -11,6 +11,7 @@
         </thead>
         <tbody>
             <% @items_payment = 0 %>
+            <% @shopping_cost = 800 %>
             <% @cart_items.each do |cart_item| %>
                 <tr>
                     <td>
@@ -27,11 +28,33 @@
                     <td><p><%= cart_item.subtotal%></p></td>
                        <% @items_payment +=  cart_item.subtotal %>
                     <td><%= link_to "削除する", public_cart_item_path(cart_item), class: "btn btn-danger" , method: :delete %></td>
-                </tr>
+                </tr>  
+             </tbody>
+            </table>
             <% end %>
+            
+            <table class="table-bordered">
+   
+            <tr>
+            <th> 配送料</th>
+            <td><%= @shopping_cost %></td>
+            </tr>
+            <tr>
+            <th>単価(税込)</th>
+            <td><%= @items_payment %></td>
+            </tr>
+            <tr>
+            <th>合計</th>
+            <td><%= @shopping_cost + @items_payment %></td>
+            </tr>
+            </table>
+            
+            
+            
 
-        </tbody>
-    </table>
+
+      
+  
             <%= link_to "買い物を続ける", root_path,class: "btn btn-primary"  %></td>
             <%= link_to "情報入力画面に進む", new_public_order_path ,class: "btn btn-success"  %></td>
 
