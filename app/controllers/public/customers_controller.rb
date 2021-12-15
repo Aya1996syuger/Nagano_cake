@@ -1,12 +1,15 @@
 class Public::CustomersController < ApplicationController
+  #マイページ
   def show
     @customer = Customer.find(params[:id])
   end
 
+#マイページ編集
   def edit
    @customer = Customer.find(params[:id])
   end
 
+#マイページ更新
   def update
    customer = Customer.find(params[:id])
    if customer.update(customer_params)
@@ -17,7 +20,8 @@ class Public::CustomersController < ApplicationController
      render :edit
    end
   end
-  
+
+  #退会確認画面
   def unsubscribe
     @customer = current_customer
   end
@@ -32,7 +36,7 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).
-    permit(:first_name, :last_name, :last_name_kana, :first_name_kana, :email, :adress, :telephone_number ,:is_active)
+    permit(:first_name, :last_name, :last_name_kana, :first_name_kana, :email, :address, :telephone_number ,:is_active)
   end
 end
 

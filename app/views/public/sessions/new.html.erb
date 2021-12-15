@@ -2,6 +2,8 @@
  <span class="title">ログイン</span><br>
 </h4>
 
+<%= flash[:error] %>
+
  <span class="title">会員の方はこちらからログイン</span><br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -33,4 +35,4 @@
   <%= link_to "こちら", new_customer_registration_path %>からログインしてください
 
 
-<!--%= render "devise/shared/links" %-->
+<%= render "public/shared/links" %>

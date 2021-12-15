@@ -2,8 +2,7 @@ class Public::AddressesController < ApplicationController
  #配送先登録・一覧
  def index
    @address = Address.new
-   @addresses = Address.all
-   @customer = current_customer
+   @addresses = current_customer.addresses
  end
 
 #配送先編集

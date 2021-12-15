@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :cart_item_nill, only: [:new]
+
   def new
     @order = Order.new
     @customer = current_customer
@@ -12,9 +14,9 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
-      #@order.address = address.address
-      #@order.postal_code = address.postal_code
-      #@order.name = address.name
+      @order.address = address.address
+      @order.postal_code = address.postal_code
+      @order.name = address.name
     elsif params[:order][:select_address] == "2"
       @order.address = params[:order][:address]
       @order.postal_code = params[:order][:postal_code]
@@ -30,11 +32,12 @@ class Public::OrdersController < ApplicationController
       @order.customer_id = current_customer.id
        @cart_items = CartItem.where(customer_id: current_customer.id)
       if @order.save
+        #order_details
         @cart_items.destroy_all
        redirect_to public_order_thanks_path
-     else
+      else
        render [:new]
-     end
+      end
   end
 
 
@@ -44,9 +47,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-		@customer = current_customer
-		@orders = @customer.orders
-    @cart_items = CartItem.where(customer_id: current_customer.id)
+		@orders = current_customer.orders
   end
 
   def show
@@ -58,5 +59,12 @@ class Public::OrdersController < ApplicationController
 
   def order_params
    params.require(:order).permit( :customer_id, :postal_code,:address, :name, :payment_method, :shopping_cost, :total_payment)
+  end
+  
+  def cart_item_nill
+    if current_customer.cart_items.empty?
+       flash[:error] = "カートが空です。"
+        redirect_to public_items_path
+    end  
   end
 end

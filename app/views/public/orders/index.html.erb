@@ -8,26 +8,20 @@
       <th>配送先</th>
       <th>注文商品</th>
       <th>支払金額</th>
-      <th>ステータス</th>
+
     </tr>
    </thead>
 
   <tbody>
-    <% @items_payment = 0 %>
-    <% @shopping_cost = 800 %>
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= order.postal_code %><%= order.address %><%= order.name %></td>
-    	<td><% @cart_items.each do |cart_item| %>
-  				<%= cart_item.item.name %>
+      <td><%# order.order_details.each do |order_detail| %>
+  			  <%#= order_detail.item.name %>
   		</td>
-  					<p><% cart_item.subtotal%></p>
-                <% @items_payment =  cart_item.subtotal %>
-  				<% end %>
-  				 <td> <%= @shopping_cost + @items_payment %></td>
-      <td>ステータス</td>
-     
+      <td><%= order.total_payment %></td>
+
     <% end %>
     </tr>
   </tbody>
