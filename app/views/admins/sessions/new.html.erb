@@ -4,18 +4,18 @@
 
 <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
 
+<table class="table table-borderless">
+    <th><%= f.label :メールアドレス %></th>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,:size => "60*60"%></td>
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,:size => "60*60"%> 
-  </div>
 
-  <div class="field">
-    <%= f.label :パスワード%><br />
-    <%= f.password_field :password, autocomplete: "current-password" ,:size => "60*60"%>
-  </div>
 
- 
+
+    <th><%= f.label :パスワード%></th>
+    <td><%= f.password_field :password, autocomplete: "current-password" ,:size => "60*60"%></td>
+</table>
+
+
 
   <div class="actions">
     <%= f.submit 'ログイン',class:"btn btn-success" %>

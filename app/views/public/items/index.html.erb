@@ -11,15 +11,16 @@
     <% @items.each do |item| %>
       <div class= "flex-item">
       <%= attachment_image_tag item, :image, :fill, 180, 160 %></br>
-        <%= link_to public_item_path(item.id) do%>
-          <p><%= item.name %></p>
-        <% end %>
+        <% if item.is_active == true %>
+          <%= link_to public_item_path(item.id) do%>
+            <p><%= item.name %></p>
+          <% end %>
           <p>¥<%= item.price %></p>
-      <% if item.is_active == true %>
-       <p class="text-green"></p>
-      <% else %>
-       <p class="text-gray">売り切れ</p>
-      <% end %>
+        <% else %>
+          <p><%= item.name %></p>
+          <p>¥<%= item.price %></p>
+          <p class="text-gray">売り切れ</p>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -7,19 +7,18 @@
  <span class="title">会員の方はこちらからログイン</span><br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<dl>
-  <div class="field">
-    <dt><%= f.label :メールアドレス %></dt><br />
-    <dd><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,:size => "60*60"%></dd>
-    </dl>
-  </div>
+<table class="table table-borderless">
+  <tr>
+    <th><%= f.label :メールアドレス %></th><br />
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,:size => "60*60"%></td>
+  </tr>
 
-<dl>
-  <div class="field">
-    <dt><%= f.label :パスワード %></dt><br />
-    <dd><%= f.password_field :password, autocomplete: "current-password",:size => "60*60"%> </dd>
-</dl>
-  </div>
+  <tr>
+    <th><%= f.label :パスワード %></th><br />
+    <td><%= f.password_field :password, autocomplete: "current-password",:size => "60*60"%> </td>
+  </tr>
+</table>
+
 
 
 
