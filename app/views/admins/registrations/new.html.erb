@@ -5,17 +5,16 @@
 <%= form_with model: @admin, url: admin_registration_path, local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<table
+  <tr>
+    <th><%= f.label :email %></th>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+ <tr>
+    <th><%= f.label :password %></th>
+    <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+  </tr>
   </div>
 
   <div class="field">

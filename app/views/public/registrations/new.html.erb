@@ -7,25 +7,26 @@
 <dl>
 <table class="table table-borderless">
   <tr>
-    <th><%= f.label :（姓）%></th><br />
-    <td><%= f.text_field :last_name, autofocus: true, placeholder: "令和" %></td>
+    <th><%= f.label :名前%></th><br />
+    <td>
+    （姓）<%= f.text_field :last_name, autofocus: true, placeholder: "令和" %>
+    （名） <%= f.text_field :first_name, autofocus: true, placeholder: "道子"%>
+    </td>
   </tr>
+  
   <tr>
-    <th><%= f.label :（名）%></th><br />
-    <td><%= f.text_field :first_name, autofocus: true, placeholder: "道子"%></td>
+    <th><%= f.label :フリガナ%></th></br>
+    <td>
+    （ｾｲ）<%= f.text_field :last_name_kana, autofocus: true, placeholder: "レイワ" %>
+    （ﾒｲ）<%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %>
+    </td>
   </tr>
-  <tr>
-    <th><%= f.label :セイ%></th></br>
-    <td><%= f.text_field :last_name_kana, autofocus: true, placeholder: "レイワ" %></td>
-  </tr>
-  <tr>
-    <th><%= f.label :メイ%></th>
-    <td><%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %></td>
-  </tr>
+
   <tr>
     <th><%= f.label :メールアドレス%></th>
-    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example" %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example",:size => "40*40"%></td>
   </tr>
+  
   <tr>
     <th><%= f.label :郵便番号（ハイフンなし） %></th>
     <td><%= f.text_field :postal_code, autofocus: true, placeholder: "0000000" %></td>

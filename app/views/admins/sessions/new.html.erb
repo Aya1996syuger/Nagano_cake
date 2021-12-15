@@ -5,14 +5,14 @@
 <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
 
 <table class="table table-borderless">
+    <tr>
     <th><%= f.label :メールアドレス %></th>
     <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,:size => "60*60"%></td>
-
-
-
-
+    </tr>
+    <tr>
     <th><%= f.label :パスワード%></th>
     <td><%= f.password_field :password, autocomplete: "current-password" ,:size => "60*60"%></td>
+    </tr>
 </table>
 
 
