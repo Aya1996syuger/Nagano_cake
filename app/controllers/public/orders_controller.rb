@@ -33,6 +33,15 @@ class Public::OrdersController < ApplicationController
        @cart_items = CartItem.where(customer_id: current_customer.id)
       if @order.save
         #order_details
+        current_customer.cart_items.each do |cart_item|
+          @order_detail = OrderDetail.new
+          @order_detail.order_id = @order.id
+          @order_detail.item_id = cart_item.item_id
+          @order_detail.price = cart_item.item.with_tax_price
+          @order_detail.amount = cart_item.amount
+          @order_detail.save
+        end
+
         @cart_items.destroy_all
        redirect_to public_order_thanks_path
       else
@@ -60,11 +69,11 @@ class Public::OrdersController < ApplicationController
   def order_params
    params.require(:order).permit( :customer_id, :postal_code,:address, :name, :payment_method, :shopping_cost, :total_payment)
   end
-  
+
   def cart_item_nill
     if current_customer.cart_items.empty?
        flash[:error] = "カートが空です。"
         redirect_to public_items_path
-    end  
+    end
   end
 end

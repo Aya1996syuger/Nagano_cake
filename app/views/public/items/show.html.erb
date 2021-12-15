@@ -9,6 +9,7 @@
         <p>¥<%= @item.price%>(税込）</p>
     </div>
     
+    
     <%= form_with model: @cart_item, url:public_cart_items_path, method: :POST do |f| %>
         <%= f.hidden_field :amount, value: "cart_items" %>
         <%= f.hidden_field :item_id, value: @item.id %>

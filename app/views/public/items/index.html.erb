@@ -15,6 +15,11 @@
           <p><%= item.name %></p>
         <% end %>
           <p>¥<%= item.price %></p>
+      <% if item.is_active == true %>
+       <p class="text-green"></p>
+      <% else %>
+       <p class="text-gray">売り切れ</p>
+      <% end %>
       </div>
     <% end %>
   </div>

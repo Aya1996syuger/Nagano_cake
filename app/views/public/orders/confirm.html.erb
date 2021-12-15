@@ -38,10 +38,12 @@
      </tbody>
 </table>
 
-      <h5>支払方法<%= @order.payment_method %></h5>
+      <h5>支払方法</br>
+       <%= @order.payment_method_i18n %>
+      </h5>
       <h5>
        配送先</br>
-       　〒<%= @order.postal_code %></br>
+       〒<%= @order.postal_code %></br>
         <%= @order.address %></br>
         <%= @order.name %>
       </h5>

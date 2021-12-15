@@ -1,8 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   def show
-
       @order = Order.all
-     
+      @order_details = OrderDerails.all
 
   end
 
