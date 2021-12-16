@@ -2,7 +2,10 @@
 <span class="title">注文履歴詳細</span>
 </h4>
 
+<div class= "row">
+    <div class="col-md-5 offset-md-1">
   <h6>注文情報</h6>
+
     <div class="order_info">
       <table class="table table-bordered">
         <thead>
@@ -10,7 +13,7 @@
           <th>注文日</th>
           <th>配送先</th>
           <th>支払方法</th>
-          
+
           </tr>
         </thead>
         <tbody>
@@ -34,7 +37,9 @@
         </tbody>
       </table>
     </div>
+  </div>
 
+ <div class="col-md-5 offset-md-1">
   <h6>注文内容</h6>
     <div class ="order_contents">
       <table class="table table-bordered">
@@ -47,8 +52,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @items_payment = 0 %>
-            <% @shopping_cost = 800 %>
+
           <% @cart_items.each do |cart_item| %>
 
               <tr>
@@ -64,17 +68,16 @@
                 <td>
                   <%= (cart_item.item.price * 1.1).floor * cart_item.amount %>
                 </td>
-                <p><%= cart_item.subtotal%></p>
-                <%= @items_payment =  cart_item.subtotal %>
+                <p><% cart_item.subtotal%></p>
+                <%# @items_payment +=  cart_item.subtotal %>
           <% end %>
-              
-
             </tr>
           </tbody>
       </table>
     </div>
+  </div>
 
-
+<div class="col-md-5 offset-md-1">
   <h6>請求額</h6>
     <div class="order_proce">
       <table class="table table-bordered">
@@ -84,9 +87,10 @@
           <th>請求額</th>
         </thead>
         <tbody>
-          <td><%= @shopping_cost %></td>
+          <td><%= @shopping_cost = 800 %></td>
           <td><%= @items_payment %></td>
-          <td><%= @shopping_cost + @items_payment %></td>
+          <td><%= @total_payment %></td>
         </tbody>
       </table>
     </div>
+  </div>

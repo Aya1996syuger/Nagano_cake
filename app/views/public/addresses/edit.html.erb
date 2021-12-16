@@ -1,27 +1,33 @@
 <h4>
-<span class="title">配送先編集</span>
+  <span class="title">配送先編集</span>
 </h4>
+<div class= "row">
+  <div class="col-md-5 offset-md-1">
+    <table class="table table-borderless">
+      <%= form_with model:@address,url:public_address_path(@address),method: :patch, local:true do |f| %>
+        <tr>
+          <td><label for="postal_code">郵便番号(ハイフンなし）</label></td>
+          <td><%= f.text_field :postal_code %></td>
+        </tr>
+        
+        <tr>
+          <td><label for="address">住所</label></td>
+          <td><%= f.text_field :address %></td>
+        </tr>
+        
+        <tr>
+          <td><label for="name">宛名</label></td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+    </table>
+       <%= f.submit '保存内容を変更する',class: "btn btn-success" %>
+      <% end %>
+   
+    
+  </div>
+</div>
 
-  <%= form_with model:@address,url:public_address_path(@address),method: :patch, local:true do |f| %>
-    <div class="form-group">
-    <label for="postal_code">郵便番号(ハイフンなし）</label></br>
-      <%= f.text_field :postal_code %>
-    </div>
-
-    <div class="form-group">
-    <label for="address">住所</label></br>
-      <%= f.text_field :address %>
 
 
-    <div class="form-group">
-    <label for="name">宛名</label></br>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="form-group">
-      <%#= link_to "保存内容を変更する", public_address_path(@address),class: "btn btn-success", method: :patch %>
-      <%= f.submit '保存内容を変更する',class: "btn btn-success" %>
-    </div>
-  <% end %>
 
 
