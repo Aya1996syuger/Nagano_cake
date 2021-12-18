@@ -25,7 +25,7 @@
     <div class="radio-inline">
       <%= f.radio_button :select_address, "1" %>
       <%= f.label :登録済住所から選択, class: "address_type_label" %></br>
-      <p><%= f.collection_select :address , current_customer.addresses, :id, :view_address %></p>
+      <p><%= f.collection_select :order_address , current_customer.addresses, :id, :view_address %></p>
     </div>
     <div class="radio-inline">
       <%= f.radio_button :select_address, "2" %>

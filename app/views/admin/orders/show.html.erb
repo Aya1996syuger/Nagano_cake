@@ -34,8 +34,8 @@
      <td><%=order_detail.item.name %></td>
      <td><%= order_detail.price %></td>
      <td><%= order_detail.amount %></td>
-     <td></td>
-  
+     <td><%= order_detail.price * order_detail.amount %></td>
+
   </tr>
      <% end %>
    </tbody>
