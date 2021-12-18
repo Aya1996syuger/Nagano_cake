@@ -13,15 +13,20 @@
    </thead>
 
   <tbody>
+    <% @items_payment = 0 %>
     <% @orders.each do |order| %>
-    <tr>  
+    <tr>
       <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= order.postal_code %><%= order.address %><%= order.name %></td>
       <td><% order.order_details.each do |order_detail| %>
   			  <%= order_detail.item.name %>
+  			  <% @items_payment +=  order_detail.price * order_detail.amount %>
+
   			  <% end %>
+
   		</td>
-      <td><%= order.total_payment %></td>
+  		<% @shopping_cost = 800 %>
+      <td><%=  @items_payment + @shopping_cost %></td>
       <td><%= link_to "詳細", public_order_path(order),class: "btn btn-primary"  %></td>
 
     <% end %>

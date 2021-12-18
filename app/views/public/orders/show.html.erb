@@ -52,25 +52,26 @@
           </tr>
         </thead>
         <tbody>
-
-          <% @cart_items.each do |cart_item| %>
+         <% @items_payment = 0 %>
+          <% @order_details.each do |order_detail| %>
 
               <tr>
                 <td>
-                　　<%= cart_item.item.name %>
+                　　<%= order_detail.item.name %>
                 </td>
                 <td>
-                  <%= (cart_item.item.price * 1.1).floor %>
+                  <%= (order_detail.item.price * 1.1).floor %>
                 </td>
                 <td>
-                  <%= cart_item.amount %>
+                  <%= order_detail.amount %>
                 </td>
                 <td>
-                  <%= (cart_item.item.price * 1.1).floor * cart_item.amount %>
+                  <%= (order_detail.item.price * 1.1).floor * order_detail.amount %>
                 </td>
-                <p><% cart_item.subtotal%></p>
-                <%# @items_payment +=  cart_item.subtotal %>
+                <p><% order_detail.price%></p>
+                <% @items_payment +=  order_detail.price %>
           <% end %>
+
             </tr>
           </tbody>
       </table>
@@ -89,7 +90,7 @@
         <tbody>
           <td><%= @shopping_cost = 800 %></td>
           <td><%= @items_payment %></td>
-          <td><%= @total_payment %></td>
+          <td><%= @items_payment + @shopping_cost  %></td>
         </tbody>
       </table>
     </div>

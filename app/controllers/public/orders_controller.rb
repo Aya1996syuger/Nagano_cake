@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+
       @cart_items = current_customer.cart_items
       @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
@@ -14,9 +15,9 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:select_address] == "1"
-      @order.address = address.address
-      @order.postal_code = address.postal_code
-      @order.name = address.name
+      @order.address =Address.find(params[:addressid]).address
+      @order.postal_code = Address.find(params[:address_id]).postal_code
+      @order.name = Address.find(params[:address_id]).name
     elsif params[:order][:select_address] == "2"
       @order.address = params[:order][:address]
       @order.postal_code = params[:order][:postal_code]
@@ -61,7 +62,8 @@ class Public::OrdersController < ApplicationController
 
   def show
 	 	@order = Order.find(params[:id])
-	 	@cart_items = CartItem.where(customer_id: current_customer.id)
+	 	@order_details = @order.order_details
+
   end
 
   private
