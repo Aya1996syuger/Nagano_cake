@@ -2,23 +2,46 @@
  <span class="title"><%= @customer.last_name%><%= @customer.first_name %>さんの会員詳細</span>
 </h5>
 
-<h6>会員ID</h6>
-<p><%= @customer.id %></p>
-<h6>氏名</h6>
-<p><%= @customer.last_name%><%= @customer.first_name %></p>
-<h6>フリガナ</h6>
-<p><%= @customer.last_name_kana%><%= @customer.first_name_kana %></p>
-<h6>郵便番号</h6>
-<p><%= @customer.postal_code %></p>
-<h6>住所</h6>
-<p><%= @customer.address %></p>
-<h6>メールアドレス</h6>
-<p><%= @customer.email %></p>
-<h6>ステータス</h6>
-   <% if@customer.is_active == true %>
-    有効
-   <% else %>
-    退会
-   <% end %>
 
-<%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success" %>
+<div class="row">
+ <div class="col-md-4 offset-md-1">
+  <table class="table">
+   <tr>
+    <th>会員ID</th>
+    <td><%= @customer.id %></td>
+   </tr>
+   <tr>
+    <th>氏名</th>
+    <td><%= @customer.last_name%><%= @customer.first_name %></td>
+   </tr>
+   <tr>
+    <th>フリガナ</th>
+    <td><%= @customer.last_name_kana%><%= @customer.first_name_kana %></td>
+   </tr>
+   <tr>
+    <th>郵便番号</th>
+    <td><%= @customer.postal_code %></td>
+   </tr>
+   <tr>
+    <th>住所</th>
+    <td><%= @customer.address %></td>
+   </tr>
+   <tr>
+    <th>メールアドレス</th>
+    <td><%= @customer.email %></td>
+   </tr>
+   <tr>
+    <th>ステータス</th>
+    <td> <% if@customer.is_active == true %>
+      有効
+     <% else %>
+      退会
+     <% end %>
+    </td>
+   </tr>
+  </table>
+  <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success" %>
+ </div>
+</div>
+
+

@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
   #アイテム新規作成
+  
   def new
     @item = Item.new
   end
