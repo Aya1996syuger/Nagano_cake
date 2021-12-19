@@ -69,7 +69,7 @@
                   <%= (order_detail.item.price * 1.1).floor * order_detail.amount %>
                 </td>
                 <p><% order_detail.price%></p>
-                <% @items_payment +=  order_detail.price %>
+                <% @items_payment +=  order_detail.price * order_detail.amount%>
           <% end %>
 
             </tr>
