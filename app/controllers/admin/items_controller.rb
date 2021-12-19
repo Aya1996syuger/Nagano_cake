@@ -1,14 +1,18 @@
 class Admin::ItemsController < ApplicationController
   #アイテム新規作成
-  
+
   def new
     @item = Item.new
+ 
   end
 
   def create
      @item = Item.new(item_params)
-     @item.save
-     redirect_to admin_item_path(@item)
+    if @item.save
+      redirect_to admin_item_path(@item)
+    else
+      render :index
+    end
   end
 
 #商品一覧
