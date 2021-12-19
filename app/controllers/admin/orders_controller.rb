@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
-   def order_detail_params
-    params.require(:order).permit( :item_id, :order_id, :price, :amount )
+   def order_params
+    params.require(:order).permit( :customer_id, :postal_code, :shopping_cost, :total_payment, :payment_method, :name, :address )
    end
 end
